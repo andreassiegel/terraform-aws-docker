@@ -1,0 +1,95 @@
+= Getting Started with Terraform, AWS EC2 and Docker
+
+This is an example Terraform configuration that provisions an EC2 instance in
+AWS that is prepared to run Docker containers, and that can also be managed
+using Docker Machine.
+
+== Prerequisites
+
+In order to use this example, Docker and Terraform need to be installed.
+
+The easiest way to install both of them on Mac OS is to use
+https://brew.sh[Homebrew].
+
+=== Docker Installation
+
+[source, bash]
+----
+$ brew cask install docker
+----
+
+Note that the Docker installation using Homebrew requires
+https://caskroom.github.io/[Homebrew Cask].
+
+Alternatively, you can also install Docker for Mac following the instructions in
+the official documentation:
+https://docs.docker.com/docker-for-mac/install/[Install Docker for Mac], or see
+the general https://docs.docker.com/engine/installation/[Install Docker] page
+for further options and other platforms.
+
+=== Terraform Installation
+
+[source, bash]
+----
+$ brew install terraform
+----
+
+If you either don't use Mac or, for some reason, don't want to use Homebrew,
+check out the https://www.terraform.io/downloads.html[Terraform Download] page
+for other installation options.
+
+== Run Terraform to set up the Infrastructure
+
+=== Initialization
+
+[source, bash]
+----
+$ terraform init
+----
+
+This command initializes the Terraform configuration.
+
+It creates a `.terraform` directory, that will later on contain all modules that
+are used in the configuration.
+
+=== Get Modules
+
+[source, bash]
+----
+$ terraform get
+----
+
+This command populates the directory that was created in the previous step.
+The modules used in the root configuration and their dependencies are copied to
+`.terraform/modules`.
+
+=== Plan the Execution
+
+[source, bash]
+----
+$ terraform plan
+----
+
+The command creates the execution plan to perform the actions that are required
+to achieve the desired state that is expressed in the configuration.
+
+The output shows which resources already exist, need to be modified or destroyed.
+
+=== Run the Execution
+
+[source, bash]
+----
+$ terraform apply
+----
+
+This will run the execution to setup the infrastructure.
+
+=== Destroy the Infrastructure
+
+[source, bash]
+----
+$ terraform destroy
+----
+
+If the infrastructure is not needed any longer, this command will destroy
+everything that was created by Terraform.
