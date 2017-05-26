@@ -23,3 +23,7 @@ variable "external_port" {
   default     = 80
   description = "Host port"
 }
+
+variable "docker_machine_root_path" {
+  default = "/Users/as/.docker/machine/machines"
+}

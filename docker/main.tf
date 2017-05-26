@@ -1,6 +1,6 @@
 provider "docker" {
   host      = "tcp://${var.docker_host}:2376"
-  cert_path = "/Users/as/.docker/machine/machines/${var.docker_machine_name}"
+  cert_path = "${var.docker_machine_root_path}/${var.docker_machine_name}"
 }
 
 resource "docker_image" "image" {
